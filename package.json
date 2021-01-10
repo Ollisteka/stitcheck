@@ -7,7 +7,9 @@
         "start": "yarn run start-prod",
         "start-dev": "set NODE_ENV=development&& set PORT=3001 && set DEBUG=* && node ./bin/server.js",
         "start-prod": "node ./bin/server.js",
-        "heroku-postbuild": "cd client && yarn && yarn run build"
+        "build-front": "cd client && yarn && yarn run build",
+        "heroku-postbuild": "yarn run build-front",
+        "test": "cd client && yarn run test"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
