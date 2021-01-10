@@ -16,7 +16,7 @@
                 "SwitchCase": 1
             }
         ],
-        "linebreak-style": ["warn", "windows"],
+        "linebreak-style": ["warn", "unix"],
         "no-unused-vars": "warn",
         "prefer-const": "warn",
         "quotes": ["error", "single"],

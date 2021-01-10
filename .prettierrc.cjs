@@ -1,6 +1,6 @@
 module.exports = {
     bracketSpacing: true,
-    endOfLine: 'crlf',
+    endOfLine: 'lf',
     singleQuote: true,
     tabWidth: 4,
     useTabs: false,
