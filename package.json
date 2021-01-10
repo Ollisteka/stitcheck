@@ -1,18 +1,18 @@
 {
     "name": "stitcheck",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "private": true,
     "type": "module",
     "scripts": {
-        "start": "npm run start-prod",
+        "start": "yarn run start-prod",
         "start-dev": "set NODE_ENV=development&& set PORT=3001 && set DEBUG=* && node ./bin/server.js",
-        "start-prod": "node ./bin/server.js"
+        "start-prod": "node ./bin/server.js",
+        "heroku-postbuild": "cd client && yarn && yarn run build"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
         "debug": "~2.6.9",
         "express": "~4.16.1",
-        "hbs": "^4.1.1",
         "http-errors": "~1.6.3",
         "morgan": "~1.9.1"
     },
