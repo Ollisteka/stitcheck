@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { PatternPage } from '../PatternPage';
+import { SelectFile } from '../SelectFile';
+
+const Pages = {
+    SelectFile: 0,
+    PatternPage: 1,
+};
 
 export const App = () => {
+    const [currentPage, setPage] = useState(Pages.SelectFile);
     const [pattern, setPattern] = useState([]);
-    useEffect(() => {
-        fetch('/pattern')
-            .then((res) => res.json())
-            .then(setPattern);
+    const onFileUpload = useCallback((data) => {
+        setPage(Pages.PatternPage);
+        setPattern(data);
     }, []);
-
     return (
         <div>
             <h3>Stitcheck</h3>
-            <p>Welcome to Stitcheck!</p>
-            <main>
-                {pattern.map((element, idx) => (
-                    <button style={{ backgroundColor: element[1] }} key={idx}>
-                        {element[0]}
-                    </button>
-                ))}
-            </main>
+            {currentPage === Pages.SelectFile && (
+                <SelectFile onFileUpload={onFileUpload} />
+            )}
+            {currentPage === Pages.PatternPage && (
+                <PatternPage pattern={pattern} />
+            )}
         </div>
     );
 };

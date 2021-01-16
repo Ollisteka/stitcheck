@@ -1,0 +1,7 @@
+.row {
+    display: flex;
+}
+
+.row:nth-child(5n) {
+    border-bottom: black solid 1px;
+}

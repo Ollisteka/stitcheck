@@ -1,0 +1,66 @@
+.cell,
+.button {
+    width: 20px;
+    height: 20px;
+}
+
+.cell {
+    padding: 0;
+}
+
+.button {
+    border: none;
+    display: block;
+}
+
+.cell:nth-child(n + 1) {
+    border: black solid 1px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.cell:nth-child(5n) {
+    border-right: black solid 2px;
+}
+
+.cell:first-child {
+    border-left: black solid 1px;
+}
+
+.pressable {
+    cursor: pointer;
+}
+
+.empty {
+    background: #fff;
+}
+
+.halfCrossed {
+    background: linear-gradient(
+        to top left,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) calc(50% - 1.5px),
+        rgba(0, 0, 0, 1) 50%,
+        rgba(0, 0, 0, 0) calc(50% + 1.5px),
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.fullyCrossed {
+    background: linear-gradient(
+            to top left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 1.5px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) calc(50% + 1.5px),
+            rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+            to top right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 1.5px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) calc(50% + 1.5px),
+            rgba(0, 0, 0, 0) 100%
+        );
+}
