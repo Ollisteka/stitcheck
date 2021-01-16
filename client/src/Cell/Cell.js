@@ -5,11 +5,14 @@ import cx from 'classnames';
 import styles from './Cell.module.css';
 
 export const Cell = ({ cell }) => {
+    if (!cell.text) {
+        return <td className={cx(styles.cell, styles.empty)} />;
+    }
+
     return (
         <td className={styles.cell}>
             <button
                 className={cx(styles.button, { [styles.pressable]: cell.text })}
-                disabled={!cell.text}
                 style={{
                     backgroundColor: cell.color,
                 }}

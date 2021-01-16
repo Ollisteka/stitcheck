@@ -30,3 +30,7 @@
 .pressable {
     cursor: pointer;
 }
+
+.empty {
+    background: #FFF;
+}
