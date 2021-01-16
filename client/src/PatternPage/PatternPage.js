@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
 import { Row } from './Row';
 import { Cell } from './Cell';
+import styles from './PatternPage.module.css';
 
-export const PatternPage = () => {
-    const [pattern, setPattern] = useState([]);
-    useEffect(() => {
-        fetch('/pattern/read')
-            .then((res) => res.json())
-            .then(setPattern);
-    }, []);
-
+export const PatternPage = ({ pattern }) => {
     return (
         <>
+            <div className={styles.warning}>
+                <em>
+                    Please, note, that the cells you&apos;ll cross out here, are
+                    not saved! Will do this in a future version :)
+                </em>
+            </div>
             <table>
                 <tbody>
                     {pattern.map((row, rowIdx) => (
@@ -27,12 +28,10 @@ export const PatternPage = () => {
                     ))}
                 </tbody>
             </table>
-            <em>
-                &copy; All rights fot this pattern belong to{' '}
-                <a href={'https://vk.com/etrel'} rel={'noopener noreferrer'}>
-                    Usova Anastasia
-                </a>
-            </em>
         </>
     );
+};
+
+PatternPage.propTypes = {
+    pattern: PropTypes.any.isRequired,
 };

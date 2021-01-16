@@ -5,12 +5,21 @@ function getRGBFromARGB(src) {
 }
 
 export class ExcelReader {
+    async readFromFileData(fileData) {
+        const workbook = new Excel.Workbook();
+        const worksheet = (await workbook.xlsx.load(fileData)).getWorksheet(1);
+        return this._proccessWorksheet(worksheet);
+    }
+
     async readFromFile(filename) {
         const workbook = new Excel.Workbook();
         const worksheet = (await workbook.xlsx.readFile(filename)).getWorksheet(
             1
         );
+        return this._proccessWorksheet(worksheet);
+    }
 
+    _proccessWorksheet(worksheet) {
         const data = [];
         worksheet.columns.forEach((column, columnNumber) => {
             column.eachCell(function (cell, rowNumber) {
