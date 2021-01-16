@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "private": true,
     "type": "module",
+    "engines": {
+        "node": "15.x"
+    },
     "scripts": {
         "start": "yarn run start-prod",
         "start-dev": "set NODE_ENV=development&& set PORT=3001 && set DEBUG=* && node ./bin/server.js",
