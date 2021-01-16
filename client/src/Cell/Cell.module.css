@@ -32,5 +32,35 @@
 }
 
 .empty {
-    background: #FFF;
+    background: #fff;
+}
+
+.halfCrossed {
+    background: linear-gradient(
+        to top left,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) calc(50% - 1.5px),
+        rgba(0, 0, 0, 1) 50%,
+        rgba(0, 0, 0, 0) calc(50% + 1.5px),
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.fullyCrossed {
+    background: linear-gradient(
+            to top left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 1.5px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) calc(50% + 1.5px),
+            rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+            to top right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) calc(50% - 1.5px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) calc(50% + 1.5px),
+            rgba(0, 0, 0, 0) 100%
+        );
 }
