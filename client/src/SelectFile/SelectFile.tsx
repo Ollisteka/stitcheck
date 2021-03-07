@@ -1,24 +1,33 @@
-import React, { useCallback, useState } from 'react';
-import { PropTypes } from 'prop-types';
+import React, { FC, useCallback, useState } from 'react';
 import { convertFile } from '../api';
 
 import styles from './SelectFile.module.css';
+import { CellDto } from '../serverTypes';
 
-const State = {
-    None: 0,
-    FileAdded: 1,
-    Loading: 2,
-    FileUploaded: 3,
-    Error: 4,
-};
+enum State {
+    None,
+    FileAdded,
+    Loading,
+    FileUploaded,
+    Error,
+}
 
-export const SelectFile = ({ onFileUpload }) => {
-    const [file, setFile] = useState(null);
-    const [formState, setFormState] = useState(State.None);
+interface SelectFileProps {
+    onFileUpload: (data: Array<CellDto[]>) => void;
+}
+
+export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
+    const [file, setFile] = useState<File | null>(null);
+    const [formState, setFormState] = useState<State>(State.None);
 
     const onSubmit = useCallback(
         async (event) => {
             event.preventDefault();
+
+            if (!file) {
+                setFormState(State.Error);
+                return;
+            }
 
             setFormState(State.Loading);
             const formData = new FormData();
@@ -60,8 +69,11 @@ export const SelectFile = ({ onFileUpload }) => {
                     multiple={false}
                     disabled={formState === State.Loading}
                     onChange={(event) => {
-                        setFile(event.target.files[0]);
-                        setFormState(State.FileAdded);
+                        const files = event.target.files;
+                        if (files) {
+                            setFile(files[0]);
+                            setFormState(State.FileAdded);
+                        }
                     }}
                     required
                 />
@@ -84,8 +96,4 @@ export const SelectFile = ({ onFileUpload }) => {
             </form>
         </>
     );
-};
-
-SelectFile.propTypes = {
-    onFileUpload: PropTypes.func.isRequired,
 };

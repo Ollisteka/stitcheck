@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useState } from 'react';
 import cx from 'classnames';
 
 import styles from './Cell.module.css';
+import { CellDto } from '../../serverTypes';
 
-const CellState = {
-    Empty: 0,
-    HalfCrossed: 1,
-    FullyCrossed: 2,
-};
+enum CellState {
+    Empty,
+    HalfCrossed,
+    FullyCrossed,
+}
 
-function getCrossStyle(cellState) {
+function getCrossStyle(cellState: CellState) {
     switch (cellState) {
         case CellState.HalfCrossed:
             return styles.halfCrossed;
@@ -21,7 +21,11 @@ function getCrossStyle(cellState) {
     }
 }
 
-export const Cell = ({ cell }) => {
+interface CellProps {
+    cell: CellDto;
+}
+
+export const Cell: FC<CellProps> = ({ cell }) => {
     const [cellState, setCellState] = useState(CellState.Empty);
 
     if (!cell.text) {
@@ -43,8 +47,4 @@ export const Cell = ({ cell }) => {
             </button>
         </td>
     );
-};
-
-Cell.propTypes = {
-    cell: PropTypes.shape({ color: PropTypes.string, text: PropTypes.string }),
 };

@@ -5,9 +5,9 @@ import * as api from '../api';
 import { SelectFile } from './SelectFile';
 import userEvent from '@testing-library/user-event';
 
-const convertFileMock = jest.fn().mockResolvedValue();
+const convertFileMock = jest.fn().mockResolvedValue(true);
 // eslint-disable-next-line no-import-assign
-api.convertFile = convertFileMock;
+(api as any).convertFile = convertFileMock;
 
 const validFile = new File(['123'], 'file.xlsx', {
     type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

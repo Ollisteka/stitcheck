@@ -1,11 +1,15 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { FC } from 'react';
 
 import { Row } from './Row';
 import { Cell } from './Cell';
 import styles from './PatternPage.module.css';
+import { CellDto } from '../serverTypes';
 
-export const PatternPage = ({ pattern }) => {
+interface PatternPageProps {
+    pattern: Array<CellDto[]>;
+}
+
+export const PatternPage: FC<PatternPageProps> = ({ pattern }) => {
     return (
         <>
             <div className={styles.warning}>
@@ -30,8 +34,4 @@ export const PatternPage = ({ pattern }) => {
             </table>
         </>
     );
-};
-
-PatternPage.propTypes = {
-    pattern: PropTypes.any.isRequired,
 };

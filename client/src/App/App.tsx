@@ -1,14 +1,16 @@
-import React, { useState, useCallback } from 'react';
+import React, { FC, useState, useCallback } from 'react';
+
 import { PatternPage } from '../PatternPage';
 import { SelectFile } from '../SelectFile';
 
-const Pages = {
-    SelectFile: 0,
-    PatternPage: 1,
-};
 
-export const App = () => {
-    const [currentPage, setPage] = useState(Pages.SelectFile);
+enum Pages {
+    SelectFile,
+    PatternPage
+}
+
+export const App: FC  = () => {
+    const [currentPage, setPage] = useState<Pages>(Pages.SelectFile);
     const [pattern, setPattern] = useState([]);
     const onFileUpload = useCallback((data) => {
         setPage(Pages.PatternPage);
