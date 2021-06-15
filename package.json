@@ -13,7 +13,9 @@
         "start-prod": "node ./bin/server.js",
         "build-front": "cd client && yarn && yarn run build",
         "heroku-postbuild": "yarn run build-front",
-        "test": "cd client && yarn run test"
+        "test": "cd client && yarn run test",
+        "start-client": "cd client && yarn start",
+        "start-all": "concurrently \"yarn start-dev\" \"yarn start-client\""
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
