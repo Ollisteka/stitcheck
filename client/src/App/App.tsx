@@ -17,15 +17,15 @@ export const App: FC  = () => {
         setPattern(data);
     }, []);
     return (
-        <div>
-            <h3>Stitcheck</h3>
+        <main>
+            <h1>Stitcheck</h1>
             {currentPage === Pages.SelectFile && (
                 <SelectFile onFileUpload={onFileUpload} />
             )}
             {currentPage === Pages.PatternPage && (
                 <PatternPage pattern={pattern} />
             )}
-        </div>
+        </main>
     );
 };
 

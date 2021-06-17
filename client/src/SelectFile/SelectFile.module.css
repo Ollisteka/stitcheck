@@ -1,3 +1,18 @@
+.container {
+    background: #e8e8e6;
+    border: 2px solid #89a14f;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 20px 32px 32px;
+    max-width: 60%;
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
 .instructions {
     margin-bottom: 24px;
 }

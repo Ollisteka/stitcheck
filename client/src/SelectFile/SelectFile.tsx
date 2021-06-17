@@ -42,18 +42,15 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
         [file, onFileUpload]
     );
     return (
-        <>
+        <section className={styles.container}>
             <section className={styles.instructions}>
-                <header>What to do:</header>
+                <header><h2>Prerequisites</h2></header>
                 <ol>
                     <li>Convert PDF file with your pattern to .xlsx format</li>
                     <li>Open it in Excel-like program</li>
                     <li>
-                        Remove all extra symbols like rows and columns numbers
+                        Remove all extra symbols, e.g. rows and columns numbers
                     </li>
-                    <li>Save</li>
-                    <li>Upload the result on this page</li>
-                    <li>Enjoy your pattern in an interactive form :)</li>
                 </ol>
             </section>
             <form encType={'multipart/form-data'} onSubmit={onSubmit}>
@@ -94,6 +91,6 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
                     </div>
                 )}
             </form>
-        </>
+        </section>
     );
 };
