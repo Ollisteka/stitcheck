@@ -4,12 +4,13 @@
     box-sizing: border-box;
     border-radius: 4px;
     padding: 20px 32px 32px;
-    max-width: 60%;
+    min-width: 340px;
+    max-width: 50vw;
 }
 
 @media screen and (max-width: 700px) {
     .container {
-        max-width: 100%;
+        max-width: 80vw;
     }
 }
 
