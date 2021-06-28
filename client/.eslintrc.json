@@ -5,6 +5,7 @@
         "jest": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "react-app/jest",
@@ -25,6 +26,9 @@
         "no-extra-semi": "off",
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/no-extra-semi": "warn"
+        "@typescript-eslint/no-extra-semi": "warn",
+        "@typescript-eslint/ban-types": "warn",
+        "react/no-unescaped-entities": "warn",
+        "react/jsx-wrap-multilines": "warn"
     }
 }
