@@ -1,4 +1,5 @@
-@import "colors.scss";
+@import "./colors";
+@import "./constants";
 
 body {
     margin: var(--body-top-margin) var(--body-margin) var(--body-margin);
@@ -41,7 +42,7 @@ h3 {
     color: var(--accent-color-darkest);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: $mediumDeviceWidth) {
     h1 {
         font-size: 56px;
     }

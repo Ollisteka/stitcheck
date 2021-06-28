@@ -1,3 +1,5 @@
+@import "../constants";
+
 $btn-bg-color: var(--theme-color);
 $btn-active-bg-color: var(--theme-color-dark);
 $btn-text-color: var(--white);
@@ -19,6 +21,10 @@ $border--disabled-color: var(--theme-color_muted);
     background-color: $btn-bg-color;
     border: 1px solid $border-color;
     color: $btn-text-color;
+
+    @media screen and (max-width: $mediumDeviceWidth) {
+        font-size: 18px;
+    }
 }
 
 @mixin crossLine($deg, $color) {

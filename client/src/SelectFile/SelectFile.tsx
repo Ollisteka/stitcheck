@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useRef, useState } from 'react';
 import { convertFile } from '../api';
 
-import styles from './SelectFile.module.css';
+import styles from './SelectFile.module.scss';
 import { CellDto } from '../serverTypes';
 import { Button } from '../Button';
 
