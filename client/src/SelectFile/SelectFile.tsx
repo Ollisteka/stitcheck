@@ -53,7 +53,7 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
             <section className={styles.instructions}>
                 <header><h2>Prerequisites</h2></header>
                 <ol>
-                    <li>Convert PDF file with your pattern to .xlsx format</li>
+                    <li>Convert PDF file with your pattern to&nbsp;.xlsx format</li>
                     <li>Open it in Excel-like program</li>
                     <li>
                         Remove all extra symbols, e.g. rows and columns numbers
