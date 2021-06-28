@@ -1,10 +1,4 @@
-:root {
-    --body-top-margin: 20px;
-    --body-margin: 40px;
-    --text-color: #2e2924;
-    --accent-color-dark: #6c1944;
-    --accent-color-darkest: #4b112f;
-}
+@import "colors.scss";
 
 body {
     margin: var(--body-top-margin) var(--body-margin) var(--body-margin);
