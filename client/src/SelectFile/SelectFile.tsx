@@ -1,8 +1,9 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useRef, useState } from 'react';
 import { convertFile } from '../api';
 
 import styles from './SelectFile.module.css';
 import { CellDto } from '../serverTypes';
+import { Button } from '../Button';
 
 enum State {
     None,
@@ -19,6 +20,9 @@ interface SelectFileProps {
 export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
     const [file, setFile] = useState<File | null>(null);
     const [formState, setFormState] = useState<State>(State.None);
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const onUploadButtonClick = useCallback(() => fileInputRef.current?.click?.(), []);
 
     const onSubmit = useCallback(
         async (event) => {
@@ -41,6 +45,9 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
         },
         [file, onFileUpload]
     );
+
+    const fileName = file?.name;
+
     return (
         <section className={styles.container}>
             <section className={styles.instructions}>
@@ -54,11 +61,12 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
                 </ol>
             </section>
             <form encType={'multipart/form-data'} onSubmit={onSubmit}>
-                <label htmlFor={'excelFileInput'} className={styles.label}>
-                    Select Excel file with your pattern:
-                </label>
-                <br />
+                <Button className={styles.uploadButton} onClick={onUploadButtonClick} disabled={formState === State.Loading}>
+                    Choose XLSX
+                </Button>
+                {fileName && <div className={styles.fileName}>{fileName}</div>}
                 <input
+                    ref={fileInputRef}
                     id={'excelFileInput'}
                     name={'excel'}
                     type={'file'}
@@ -73,18 +81,19 @@ export const SelectFile: FC<SelectFileProps> = ({ onFileUpload }) => {
                         }
                     }}
                     required
+                    style={{ display: 'none' }}
                 />
-
-                <br />
-                <button
+                <br/>
+                <Button
                     className={styles.convertButton}
                     type={'submit'}
                     disabled={
                         formState === State.Loading || formState === State.None
                     }
+                    loading={formState === State.Loading}
                 >
-                    Convert!
-                </button>
+                    Convert
+                </Button>
                 {formState === State.Error && (
                     <div className={styles.error}>
                         Something went wrong, please, try again

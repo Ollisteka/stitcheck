@@ -22,18 +22,14 @@
     margin-top: 8px;
 }
 
-.label {
+.fileName {
     display: inline-block;
-    margin-bottom: 8px;
-}
-
-input,
-.convertButton {
-    font: inherit;
+    margin-left: 16px;
+    font-size: 18px;
 }
 
 .convertButton {
-    margin-top: 16px;
+    margin-top: 20px;
 }
 
 .error {
