@@ -30,5 +30,10 @@
         "@typescript-eslint/ban-types": "warn",
         "react/no-unescaped-entities": "warn",
         "react/jsx-wrap-multilines": "warn"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
