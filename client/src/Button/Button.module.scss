@@ -1,0 +1,107 @@
+@import "../constants";
+
+$btn-bg-color: var(--theme-color);
+$btn-active-bg-color: var(--theme-color-dark);
+$btn-text-color: var(--white);
+$border-color: var(--theme-color-dark);
+$btn-disabled-background: var(--white_muted);
+$btn-disabled-color: var(--theme-color-light_muted);
+$border--disabled-color: var(--theme-color_muted);
+
+.button {
+    position: relative;
+    overflow: hidden;
+    padding: 8px 8px 16px 8px;
+    min-width: 182px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all .5s ease;
+    font: inherit;
+    font-size: 20px;
+    background-color: $btn-bg-color;
+    border: 1px solid $border-color;
+    color: $btn-text-color;
+
+    @media screen and (max-width: $mediumDeviceWidth) {
+        font-size: 18px;
+    }
+}
+
+@mixin crossLine($deg, $color) {
+    background-image: repeating-linear-gradient(
+                    $deg,
+                    $color,
+                    $color,
+                    2px,
+                    transparent 2px,
+                    transparent 6px
+    );
+}
+
+.button {
+    &::before,
+    &::after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: 8px;
+        background-size: 8px 8px;
+        border-top: 1px solid $btn-text-color;
+    }
+
+    &::after {
+        left: 0;
+        right: 0;
+        @include crossLine(45deg, $btn-text-color);
+    }
+
+    &::before {
+        left: -4px;
+        right: -4px;
+        @include crossLine(-45deg, $btn-text-color);
+    }
+}
+
+.button:disabled {
+    background-color: $btn-disabled-background;
+    border: 1px solid $border--disabled-color;
+    color: $btn-disabled-color;
+    cursor: auto;
+
+    &::after,
+    &::before {
+        border-top: 1px solid $btn-disabled-color;
+    }
+
+    &::after {
+        @include crossLine(45deg, $btn-disabled-color);
+    }
+
+    &::before {
+        @include crossLine(-45deg, $btn-disabled-color);
+    }
+}
+
+.button:active,
+.button:focus {
+    outline: none;
+    background-color: $btn-active-bg-color;
+    cursor: auto;
+}
+
+@keyframes stripe-slide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.loading {
+    &::before,
+    &::after {
+        animation: stripe-slide 12s infinite linear forwards;
+    }
+}

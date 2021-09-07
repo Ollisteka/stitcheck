@@ -1,0 +1,60 @@
+@import "./colors";
+@import "./constants";
+
+body {
+    margin: var(--body-top-margin) var(--body-margin) var(--body-margin);
+    font-family: 'Raleway', 'Segoe UI', sans-serif;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-width: 340px;
+    background: url('./static/bg.jpg') no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - var(--body-top-margin) - var(--body-margin));
+    color: var(--text-color);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', 'Segoe UI', serif;
+    margin: 0;
+}
+
+h1 {
+    font-size: 82px;
+    margin-bottom: 40px;
+    color: var(--accent-color-dark);
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+h2,
+h3 {
+    color: var(--accent-color-darkest);
+}
+
+@media screen and (max-width: $mediumDeviceWidth) {
+    h1 {
+        font-size: 56px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    body {
+        margin: 10px 15px 15px;
+        font-size: 16px;
+        background-image: url('./static/bg_vertical.jpg');
+        min-height: 100vh;
+    }
+}

@@ -6,7 +6,7 @@ import { SelectFile } from './SelectFile';
 import userEvent from '@testing-library/user-event';
 
 const convertFileMock = jest.fn().mockResolvedValue(true);
-// eslint-disable-next-line no-import-assign
+// eslint-disable-next-line no-import-assign,@typescript-eslint/no-explicit-any
 (api as any).convertFile = convertFileMock;
 
 const validFile = new File(['123'], 'file.xlsx', {
@@ -56,5 +56,10 @@ describe('SelectFile component', () => {
 
         await waitFor(() => expect(getConvertButton()).toBeEnabled());
         expect(getFileInput(container)).toBeEnabled();
+    });
+
+    test('chosen filename is displayed for user', async () => {
+        renderAndUploadFile(validFile);
+        await waitFor(() => expect(screen.getByText(validFile.name)).toBeVisible());
     });
 });
